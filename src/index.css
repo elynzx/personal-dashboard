@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Playwrite+NO:wght@100..400&display=swap");
+@import "tailwindcss";
+
+@theme {
+    --font-body: "Karla", sans-serif;
+    --font-title: "Playwrite NO", cursive;
+    --font-item: "Inconsolata", monospace;
+
+    /*Base*/
+    --color-bgPink: #FEE2EE;
+    --color-bgLightPink: #FBEDF4;
+    --color-bgDarkPink: #DA89B5;
+    --color-bgGray: #726c6e;
+    --color-bgLightGray: #E5EED9;
+    --color-bgDarkGray: #443d3f;
+    --color-bgYellow: #fefbc6;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    color: var(--color-bgDarkGray);
+    font-size: 14px;
+}
+
+button {
+    cursor: pointer;
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
