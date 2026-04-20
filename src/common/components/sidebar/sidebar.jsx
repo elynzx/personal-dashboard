@@ -1,12 +1,13 @@
 import { Avatar } from "../avatar/avatar";
-import { Timer } from "../timer/timer";
 import { Link } from "react-router";
 
 export function Sidebar() {
     return (
         <aside className="w-full lg:w-68 h-fit lg:h-full border-b lg:border-b-0 lg:border-r border-bgDarkGray/50 flex flex-col sm:flex-row lg:flex-col items-center justify-between lg:justify-start py-2.5 lg:py-8 px-6 bg-white/50 lg:bg-transparent">
-            <div className="flex items-center lg:flex-col w-full lg:w-auto justify-between lg:justify-start gap-4">
-                <Timer />
+            <div className="flex items-center lg:flex-col w-full lg:w-auto justify-between lg:justify-start ">
+                <div className="font-item font-semibold lg:flex hidden tracking-[5px] lg:mt-auto lg:justify-center w-full text-center py-2 border-b border-dotted border-bgDarkGray">
+                    <p>♡ Welcome ♡</p>
+                </div>
                 <nav className="flex flex-row lg:flex-col gap-2 lg:mt-8 lg:space-y-4 w-full justify-between">
                     <Link
                         className="rounded-full flex items-center justify-center lg:justify-start gap-2 w-22 lg:px-0 lg:w-52 h-8 lg:h-11 bg-bgDarkGray/70 text-white border border-transparent hover:border-pink-200 hover:bg-bgDarkGray transition-all hover:-translate-y-1 shadow-sm"
