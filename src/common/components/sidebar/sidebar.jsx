@@ -36,6 +36,15 @@ export function Sidebar() {
                         </span>
                         <span className="text-xs font-bold">Todo App</span>
                     </Link>
+                    <Link
+                        className="rounded-full flex items-center justify-center lg:justify-start gap-2 w-22 lg:px-0 lg:w-52 h-8 lg:h-11 bg-bgDarkGray/70 text-white border border-transparent hover:border-pink-200 hover:bg-bgDarkGray transition-all hover:-translate-y-1 shadow-sm"
+                        to="pokemon"
+                    >
+                        <span className="text-[10px] lg:text-xs lg:ml-8 font-bold hidden sm:inline">
+                            ⋆｡֒✧˚ ♡
+                        </span>
+                        <span className="text-xs font-bold">Poke App</span>
+                    </Link>
                 </nav>
             </div>
             <div className="lg:flex hidden lg:mt-auto lg:justify-center w-full text-center py-4 border-t border-dotted border-bgDarkGray/60">

@@ -4,6 +4,7 @@ import { Home } from "../app/home/home";
 import { AboutMe } from "../app/about-me/about-me";
 import { Todo } from "../app/todo/todo";
 import { Focus } from "../app/focus/focus";
+import { Pokemon } from "../app/pokemon/pokemon";
 import { DashboardLayout } from "../common/layouts/dashboard-layout";
 import { TodoWrapper } from "../app/todo/todo-wrapper";
 
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
                         Component: Focus,
                     },
                 ],
+            },
+            {
+                path: "pokemon",
+                Component: Pokemon,
             },
         ],
     },
