@@ -7,13 +7,14 @@
     --font-item: "Inconsolata", monospace;
 
     /*Base*/
-    --color-bgPink: #FEE2EE;
-    --color-bgLightPink: #FBEDF4;
-    --color-bgDarkPink: #DA89B5;
+    --color-bgPink: #F2BFDE;
+    --color-bgLightPink: #fbedf4;
+    --color-bgDarkPink: #F283BF;
     --color-bgGray: #726c6e;
-    --color-bgLightGray: #E5EED9;
+    --color-bgLightGray: #e5eed9;
     --color-bgDarkGray: #443d3f;
     --color-bgYellow: #fefbc6;
+    --color-bgGreen: #5BEBB6;
 }
 
 body {
@@ -29,11 +30,11 @@ button {
 }
 
 @layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
