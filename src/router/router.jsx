@@ -7,6 +7,8 @@ import { Focus } from "../app/focus/focus";
 import { Pokemon } from "../app/pokemon/pokemon";
 import { DashboardLayout } from "../common/layouts/dashboard-layout";
 import { TodoWrapper } from "../app/todo/todo-wrapper";
+import { PokemonProfile } from "../app/pokemon/pokemon-profile";
+import { PokemonLayout } from "../features/pokemon/layout/pokemon-layout";
 
 export const router = createBrowserRouter([
     {
@@ -37,7 +39,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: "pokemon",
-                Component: Pokemon,
+                Component: PokemonLayout,
+                children: [
+                    {
+                        index: "true",
+                        Component: Pokemon,
+                    },
+                    {
+                        path: ":name",
+                        Component: PokemonProfile,
+                    },
+                ],
             },
         ],
     },
