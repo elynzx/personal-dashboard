@@ -5,7 +5,6 @@ import { ArrowRightBox, ArrowLeftBox } from "pixelarticons/react";
 import { PokemonCard } from "../components/pokemon-card/pokemon-card";
 import { Pagination } from "../components/pagination/pagination";
 
-
 export function PokemonPage() {
     const [page, setPage] = useState(1);
     const limit = 8;
@@ -17,8 +16,10 @@ export function PokemonPage() {
 
     if (loading) {
         return (
-            <div className="flex-1 items-center justify-center w-full bg-linear-to-b from-bgPink to-bgGreen rounded-t-xl">
-                <h2 className="text-center">Loading...</h2>
+            <div className="flex flex-col flex-1 items-center justify-center w-full bg-linear-to-b from-bgPink to-bgGreen rounded-t-xl">
+                <h2 className="text-center font-item font-bold text-bgDarkGray animate-pulse">
+                    Loading...
+                </h2>
             </div>
         );
     }
