@@ -5,6 +5,7 @@ import { POKEMON_LIMIT } from "../utils/constants";
 import {
     addNewPokemonsToStorage,
     createPokemonProfile,
+    getPokemonFromStorage,
 } from "../store/pokemon-storage";
 
 export const useGetPokemons = (offset = 0, limit = POKEMON_LIMIT) => {
@@ -14,13 +15,19 @@ export const useGetPokemons = (offset = 0, limit = POKEMON_LIMIT) => {
 
     useEffect(() => {
         setLoading(true);
-        setError(null);
         getPokemonsList(offset, limit)
             .then((response) =>
                 Promise.all(
-                    response.results.map((pokemon) =>
-                        getPokemon(pokemon.name).then(createPokemonProfile),
-                    ),
+                    response.results.map((pokemon) => {
+                        const pokemonCached = getPokemonFromStorage(
+                            pokemon.name,
+                        );
+                        return pokemonCached
+                            ? pokemonCached
+                            : getPokemon(pokemon.name).then(
+                                  createPokemonProfile,
+                              );
+                    }),
                 ),
             )
             .then((pokemonProfiles) => {
