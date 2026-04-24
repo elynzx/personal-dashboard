@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { getPokemonDetail } from "../services/get-pokemon";
+import { getPokemon } from "../services/get-pokemon";
+import {
+    getPokemonFromStorage,
+    createPokemonProfile,
+} from "../store/pokemon-storage";
 
 export const useGetPokemon = (idOrName) => {
     const [pokemon, setPokemon] = useState(null);
@@ -8,12 +12,20 @@ export const useGetPokemon = (idOrName) => {
 
     useEffect(() => {
         if (!idOrName) return;
-        
         setLoading(true);
-        getPokemonDetail(idOrName)
-            .then((data) => setPokemon(data))
-            .catch((err) => setError(err.message))
-            .finally(() => setLoading(false));
+        
+        const cachedPokemon = getPokemonFromStorage(idOrName);
+        if (cachedPokemon) {
+            setPokemon(cachedPokemon);
+            setLoading(false);
+            return;
+        } else {
+            getPokemon(idOrName)
+                .then(createPokemonProfile)
+                .then(setPokemon)
+                .catch((err) => setError(err.message))
+                .finally(() => setLoading(false));
+        }
     }, [idOrName]);
 
     return { data: pokemon, loading, error };
