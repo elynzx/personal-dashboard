@@ -20,16 +20,11 @@ export const PokemonInfoCard = ({
 }) => {
     const pokemonHeightInCm = `${height * 10} cm`;
     const pokemonWeightInKg = `${weight / 10} kg`;
-    const typeNames = types
-        .map((pokemonType) => pokemonType.type.name)
-        .join(" / ");
-    const abilitiesNames = abilities
-        .map((pokemonAbility) => pokemonAbility.ability.name)
-        .join(", ");
-
-    const pokemonTypeBadges = types.map((pokemonType) => ({
-        name: pokemonType.type.name,
-        color: POKEMON_TYPE_COLORS[pokemonType.type.name] || "#F3F4F6",
+    const abilitiesNames = abilities.join(", ");
+    const typeNames = types.join(" / ");
+    const pokemonTypeBadges = types.map((typeNames) => ({
+        name: typeNames,
+        color: POKEMON_TYPE_COLORS[typeNames] || "#F3F4F6",
     }));
 
     return (

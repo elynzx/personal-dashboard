@@ -3,11 +3,8 @@ import { POKEMON_TYPE_COLORS } from "../../utils/pokemon-colors";
 
 export const PokemonCard = ({ pokemon }) => {
     const navigate = useNavigate();
-    const { id, name, sprites, types } = pokemon;
-
-    const imageUrl =
-        sprites.versions["generation-v"]["black-white"].animated.front_default;
-    const mainType = types[0].type.name;
+    const { id, name, image, types } = pokemon;
+    const mainType = types[0];
     const themeColor = POKEMON_TYPE_COLORS[mainType] || "#F5F5F5";
     const formattedId = `#${id.toString().padStart(3, "0")}`;
 
@@ -18,7 +15,7 @@ export const PokemonCard = ({ pokemon }) => {
         >
             <div className="w-full h-35 flex justify-center items-center p-5 ">
                 <img
-                    src={imageUrl}
+                    src={image}
                     alt={name}
                     className="w-full h-full object-contain"
                 />

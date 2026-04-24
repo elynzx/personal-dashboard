@@ -8,7 +8,7 @@ import { POKEMON_TYPE_COLORS } from "../utils/pokemon-colors";
 export function PokemonProfilePage() {
     const { name: pokemonName } = useParams();
     const navigate = useNavigate();
-    const { data: pokemon, loading } = useGetPokemon(pokemonName);
+    const { data: pokemon, loading, error } = useGetPokemon(pokemonName);
 
     if (loading || !pokemon)
         return (
@@ -17,11 +17,9 @@ export function PokemonProfilePage() {
             </div>
         );
 
-    const { id, name, sprites, types, height, weight, abilities } = pokemon;
-    const imageUrl =
-        sprites.versions["generation-v"]["black-white"].animated
-            .front_default || sprites.front_default;
-    const mainType = types[0].type.name;
+    const { id, name, image, types, height, weight, abilities } = pokemon;
+
+    const mainType = types[0];
 
     const themeColor = POKEMON_TYPE_COLORS[mainType] || "#F3F4F6";
 
@@ -42,7 +40,7 @@ export function PokemonProfilePage() {
             </button>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-18 max-w-5xl mx-auto w-full pt-20 my-auto md:pt-12 md:pb-10">
-                <PokemonHero id={id} name={name} imageUrl={imageUrl} />
+                <PokemonHero id={id} name={name} imageUrl={image} />
                 <PokemonInfoCard
                     height={height}
                     weight={weight}
