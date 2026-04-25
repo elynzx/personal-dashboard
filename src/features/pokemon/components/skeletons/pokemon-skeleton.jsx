@@ -1,6 +1,6 @@
 export const PokemonCardSkeleton = () => {
     return (
-        <div className="flex flex-col p-4 bg-white/10 w-48 md:max-w-42 h-60 rounded-2xl border border-white/5">
+        <div className="flex flex-col p-4 bg-gray-300/30 w-48 md:max-w-42 h-60 rounded-2xl border border-white/5">
             <div className="w-full h-35 bg-gray-600/50 rounded-lg animate-pulse flex justify-center items-center">
                 <div className="w-20 h-20  rounded-full"></div>
             </div>
@@ -16,7 +16,7 @@ export const PokemonCardSkeleton = () => {
 
 export const PaginationSkeleton = () => {
     return (
-        <div className="flex justify-between items-center py-6 px-12 bg-white/10 w-full mt-auto rounded-b-xl h-18">
+        <div className="flex justify-between items-center py-6 px-12 bg-gray-300/30 w-full mt-auto rounded-b-xl h-18">
             <div className="h-6 w-16 bg-gray-600/50 rounded-md animate-pulse"></div>
             <div className="h-6 w-40 bg-gray-600/50 rounded-md animate-pulse"></div>
             <div className="h-8 w-8 bg-gray-600/50 rounded-md animate-pulse"></div>
