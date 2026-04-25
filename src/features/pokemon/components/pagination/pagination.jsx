@@ -11,38 +11,37 @@ export const Pagination = ({
     onNextPage,
 }) => {
     return (
-        <div className="flex justify-between text-white tracking-wide font-item text-[12px] items-center py-6 gap-4 px-12 bg-bgDarkGray w-full mt-auto rounded-b-xl">
+        <div className="flex items-center justify-between text-white tracking-wide font-item text-[12px] h-16 md:h-20 px-4 md:px-12 bg-bgDarkGray w-full mt-auto rounded-b-xl border-t border-white/5">
             <button
-                className="text-white flex items-center justify-center uppercase disabled:opacity-30 hover:text-bgDarkPink hover:scale-110 transition-transform"
+                className="flex items-center w-[40px] md:w-full gap-1 uppercase disabled:opacity-30 hover:text-bgDarkPink transition-all active:scale-95"
                 onClick={firstPage}
                 disabled={currentPage === 1}
             >
                 <ChevronLeft2 size={24} />
-                First
+                <span className="hidden md:inline">First</span>
             </button>
-            <div className="flex gap-4">
+            <div className="flex items-center gap-3 md:gap-6">
                 <button
-                    className="disabled:opacity-30 hover:text-bgDarkPink hover:scale-110 transition-transform cursor-pointer"
+                    className="disabled:opacity-30 hover:text-bgDarkPink transition-transform active:scale-90 cursor-pointer"
                     onClick={onPrevPage}
                     disabled={currentPage === 1}
                 >
-                    <SquareChevronLeft />
+                    <SquareChevronLeft size={28} />
                 </button>
-                <div className="bg-white/10 px-4 py-0.5 rounded-md select-none flex items-center justify-center">
-                    <span className="font-semibold uppercase">
-                        Page {currentPage}
+                <div className="bg-white/10 px-3 py-1 rounded-lg select-none border border-white/10 shadow-inner">
+                    <span className="font-bold uppercase whitespace-nowrap">
+                         {currentPage}
                     </span>
                 </div>
                 <button
-                    className="hover:text-bgDarkPink hover:scale-110 cursor-pointer"
+                    className="hover:text-bgDarkPink transition-transform active:scale-90 cursor-pointer"
                     onClick={onNextPage}
                 >
-                    <SquareChevronRight />
+                    <SquareChevronRight size={28} />
                 </button>
             </div>
-            <div className="flex items-center gap-1 opacity-0 hidden sm:flex">
-                <ChevronLeft2 size={24} />
-                <span className=" uppercase font-mono">Next</span>
+            <div className="w-[40px] md:w-auto flex items-center justify-end opacity-0 pointer-events-none md:pointer-events-auto md:opacity-0">
+                <span className="hidden md:block uppercase">Next</span>
             </div>
         </div>
     );
