@@ -34,12 +34,12 @@ export function PokemonProfilePage() {
         >
             <button
                 onClick={() => navigate(-1)}
-                className="absolute top-14 md:top-6 left-8 z-30 flex items-center gap-2 text-bgDarkGray/60 hover:text-bgDarkGray hover:scale-110 transition-transform cursor-pointer text-xs font-bold uppercase"
+                className="absolute top-8 md:top-6 left-8 z-30 flex items-center gap-2 text-bgDarkGray/60 hover:text-bgDarkGray hover:scale-110 transition-transform cursor-pointer text-xs font-bold uppercase"
             >
                 <ArrowLeft size={20} /> Back
             </button>
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-18 max-w-5xl mx-auto w-full pt-20 my-auto md:pt-12 md:pb-10">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-18 max-w-5xl mx-auto w-full pt-12 my-auto md:pt-12 md:pb-10">
                 <PokemonHero id={id} name={name} imageUrl={image} />
                 <PokemonInfoCard
                     height={height}
