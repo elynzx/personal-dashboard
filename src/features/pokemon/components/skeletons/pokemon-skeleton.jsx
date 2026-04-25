@@ -26,9 +26,9 @@ export const PaginationSkeleton = () => {
 
 export const PokemonSkeleton = () => {
     return (
-        <div className="flex flex-col flex-1 w-full bg-linear-to-b from-bgPink to-bgGreen rounded-t-xl overflow-hidden">
-            <div className="flex-1 overflow-y-auto py-8 md:py-26 md:px-18">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 justify-items-center">
+        <div className="flex flex-col h-full w-full bg-linear-to-b from-bgPink to-bgGreen rounded-t-xl overflow-hidden">
+            <div className="flex-1 overflow-y-auto scrollbar-hide flex flex-col items-center justify-center p-6 md:p-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 justify-items-center w-full max-w-6xl">
                     {Array.from({ length: 8 }).map((_, key) => (
                         <PokemonCardSkeleton key={key} />
                     ))}
