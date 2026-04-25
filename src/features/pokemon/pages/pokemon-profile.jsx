@@ -34,7 +34,7 @@ export function PokemonProfilePage() {
         >
             <button
                 onClick={() => navigate(-1)}
-                className="absolute top-14 md:top-6 left-8 z-30 flex items-center gap-2 text-bgDarkGray/60 hover:text-bgDarkGray transition-all cursor-pointer text-xs font-bold uppercase"
+                className="absolute top-14 md:top-6 left-8 z-30 flex items-center gap-2 text-bgDarkGray/60 hover:text-bgDarkGray hover:scale-110 transition-transform cursor-pointer text-xs font-bold uppercase"
             >
                 <ArrowLeft size={20} /> Back
             </button>
