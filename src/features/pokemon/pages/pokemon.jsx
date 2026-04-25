@@ -1,19 +1,19 @@
 import { Header } from "../components/header/header";
-import { useState } from "react";
 import { useGetPokemons } from "../hooks/use-get-pokemons";
 import { ArrowRightBox, ArrowLeftBox } from "pixelarticons/react";
 import { PokemonCard } from "../components/pokemon-card/pokemon-card";
 import { Pagination } from "../components/pagination/pagination";
-import { POKEMON_LIMIT } from "../utils/constants";
+import { usePaginationStore } from "../store/use-pagination-store";
 
 export function PokemonPage() {
-    const [page, setPage] = useState(1);
+    const page = usePaginationStore((state) => state.page);
+    const limit = usePaginationStore((state) => state.limit);
+    const setPage = usePaginationStore((state) => state.setPage);
 
-    const offset = (page - 1) * POKEMON_LIMIT;
-    const { data, loading, error } = useGetPokemons(offset, POKEMON_LIMIT);
-    const handlePrevPage = () =>
-        setPage((pageIndex) => Math.max(1, pageIndex - 1));
-    const handleNextPage = () => setPage((pageIndex) => pageIndex + 1);
+    const offset = (page - 1) * limit;
+    const { data, loading, error } = useGetPokemons(offset, limit);
+    const handlePrevPage = () => setPage(Math.max(1, page - 1));
+    const handleNextPage = () => setPage(page + 1);
 
     if (loading) {
         return (
