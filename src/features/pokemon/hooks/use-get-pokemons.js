@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { getPokemonsList } from "../services/get-pokemon-list";
 import { getPokemon } from "../services/get-pokemon";
 import { POKEMON_LIMIT } from "../utils/constants";
-import {
-    addNewPokemonsToStorage,
-    createPokemonProfile,
-    getPokemonFromStorage,
-} from "../store/pokemon-storage";
+import { usePokemonStore } from "../store/use-pokemon-store";
+import { createPokemonProfile } from "../utils/pokemon-helpers";
 
 export const useGetPokemons = (offset = 0, limit = POKEMON_LIMIT) => {
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const addPokemons = usePokemonStore((state) => state.addPokemons);
+    const getPokemonFromStore = usePokemonStore((state) => state.getPokemons);
 
     useEffect(() => {
         setLoading(true);
@@ -19,9 +19,7 @@ export const useGetPokemons = (offset = 0, limit = POKEMON_LIMIT) => {
             .then((response) =>
                 Promise.all(
                     response.results.map((pokemon) => {
-                        const cachedPokemon = getPokemonFromStorage(
-                            pokemon.name,
-                        );
+                        const cachedPokemon = getPokemonFromStore(pokemon.name);
                         if (cachedPokemon) return cachedPokemon;
                         return getPokemon(pokemon.name).then(
                             createPokemonProfile,
@@ -31,14 +29,14 @@ export const useGetPokemons = (offset = 0, limit = POKEMON_LIMIT) => {
             )
             .then((pokemonProfiles) => {
                 setPokemons(pokemonProfiles);
-                addNewPokemonsToStorage(pokemonProfiles);
+                addPokemons(pokemonProfiles);
             })
 
             .catch((error) => {
                 setError(error.message);
             })
             .finally(() => setLoading(false));
-    }, [offset, limit]);
+    }, [offset, limit, addPokemons, getPokemonFromStore]);
 
     return {
         data: pokemons,
