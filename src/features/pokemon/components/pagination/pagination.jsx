@@ -13,7 +13,7 @@ export const Pagination = ({
     return (
         <div className="flex items-center justify-between text-white tracking-wide font-item text-[12px] h-16 md:h-20 px-4 md:px-12 bg-bgDarkGray w-full mt-auto rounded-b-xl border-t border-white/5">
             <button
-                className="flex items-center w-[40px] md:w-full gap-1 uppercase disabled:opacity-30 hover:text-bgDarkPink transition-all active:scale-95"
+                className="flex items-center w-10 md:w-full gap-1 uppercase disabled:opacity-30 hover:text-bgDarkPink transition-all active:scale-95"
                 onClick={firstPage}
                 disabled={currentPage === 1}
             >
@@ -40,7 +40,7 @@ export const Pagination = ({
                     <SquareChevronRight size={28} />
                 </button>
             </div>
-            <div className="w-[40px] md:w-auto flex items-center justify-end opacity-0 pointer-events-none md:pointer-events-auto md:opacity-0">
+            <div className="w-10 md:w-auto flex items-center justify-end opacity-0 pointer-events-none md:pointer-events-auto md:opacity-0">
                 <span className="hidden md:block uppercase">Next</span>
             </div>
         </div>

@@ -13,17 +13,19 @@ export const PokemonCardSkeleton = () => {
         </div>
     );
 };
-
 export const PaginationSkeleton = () => {
     return (
-        <div className="flex justify-between items-center py-6 px-12 bg-gray-500/60 w-full mt-auto rounded-b-xl h-18">
-            <div className="h-6 w-16 bg-gray-600/50 rounded-md animate-pulse"></div>
-            <div className="h-6 w-40 bg-gray-600/50 rounded-md animate-pulse"></div>
-            <div className="h-8 w-8 bg-gray-600/50 rounded-md animate-pulse"></div>
+        <div className="flex justify-between items-center h-16 md:h-20 px-4 md:px-12 bg-bgDarkGray w-full mt-auto rounded-b-xl border-t border-white/5">
+            <div className="h-6 w-10 md:w-full bg-gray-600/40 rounded-md animate-pulse"></div>
+            <div className="flex items-center gap-3 md:gap-6">
+                <div className="h-7 w-7 bg-gray-600/40 rounded-md animate-pulse"></div>
+                <div className="h-8 w-12 md:w-16 bg-white/5 rounded-lg animate-pulse border border-white/5"></div>
+                <div className="h-7 w-7 bg-gray-600/40 rounded-md animate-pulse"></div>
+            </div>
+            <div className="w-10 md:w-16 h-6 opacity-0"></div>
         </div>
     );
 };
-
 export const PokemonSkeleton = () => {
     return (
         <div className="flex flex-col h-full w-full bg-linear-to-b from-bgPink to-bgGreen rounded-t-xl overflow-hidden">
