@@ -23,7 +23,7 @@ export const useGetPokemon = (idOrName) => {
             getPokemon(idOrName)
                 .then(createPokemonProfile)
                 .then(setPokemon)
-                .catch((err) => setError(err.message))
+                .catch((error) => setError(error.message))
                 .finally(() => setLoading(false));
         }
     }, [idOrName]);
