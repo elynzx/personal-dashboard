@@ -1,6 +1,4 @@
-import { POKEMON_LIMIT } from "../utils/constants";
-
-export const getPokemonsList = async (offset = 0, limit = POKEMON_LIMIT) => {
+export const getPokemonsList = async (offset = 0, limit) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
     const response = await fetch(url);
     if (!response.ok) {

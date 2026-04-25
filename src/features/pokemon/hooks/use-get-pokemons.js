@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { getPokemonsList } from "../services/get-pokemon-list";
 import { getPokemon } from "../services/get-pokemon";
-import { POKEMON_LIMIT } from "../utils/constants";
 import { usePokemonStore } from "../store/use-pokemon-store";
 import { createPokemonProfile } from "../utils/pokemon-helpers";
 
-export const useGetPokemons = (offset = 0, limit = POKEMON_LIMIT) => {
+export const useGetPokemons = (offset, limit) => {
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
