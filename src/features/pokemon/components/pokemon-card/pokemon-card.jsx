@@ -11,18 +11,18 @@ export const PokemonCard = ({ pokemon }) => {
     return (
         <div
             onClick={() => navigate(`/pokemon/${pokemon.name}`)}
-            className="flex flex-col py-3 font-item bg-white border-2 border-gray-500/40 w-48 md:max-w-42 rounded-2xl shadow-lg transition-transform hover:scale-105"
+            className="flex flex-col py-3 font-item bg-white border-2 border-bgGray/40 w-46 rounded-2xl shadow-lg transition-transform hover:scale-105 fade-in-up"
         >
-            <div className="w-full h-35 flex justify-center items-center p-5 ">
+            <div className="w-full h-35 flex justify-center items-center p-4">
                 <img
                     src={image}
                     alt={name}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain drop-shadow-md"
                 />
             </div>
             <div className="flex flex-col justify-center items-center p-2">
                 <span className="text-xs font-bold">{formattedId}</span>
-                <h2 className="capitalize font-bold text-sm text-bgDarkGray">
+                <h2 className="capitalize font-bold text-xs text-bgDarkGray">
                     {name}
                 </h2>
                 <div
