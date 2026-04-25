@@ -28,7 +28,7 @@ export const PokemonInfoCard = ({
     }));
 
     return (
-        <div className="w-full md:max-w-[320px] bg-white rounded-2xl px-5 py-7 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-white flex flex-col animate-fadeIn">
+        <div className="w-full md:max-w-[320px] bg-white rounded-2xl px-5 py-7 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-white flex flex-col fadeIn">
             <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-bgLightGray/30">
                 <div
                     className="w-2 h-6 rounded-full"
