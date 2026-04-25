@@ -9,11 +9,13 @@ export function PokemonPage() {
     const page = usePaginationStore((state) => state.page);
     const limit = usePaginationStore((state) => state.limit);
     const setPage = usePaginationStore((state) => state.setPage);
+    const resetPagination = usePaginationStore((state) => state.resetPagination);
 
     const offset = (page - 1) * limit;
     const { data, loading, error } = useGetPokemons(offset, limit);
     const handlePrevPage = () => setPage(Math.max(1, page - 1));
     const handleNextPage = () => setPage(page + 1);
+    const resetPage = () => resetPagination();
 
     if (loading) {
         return (
@@ -36,6 +38,7 @@ export function PokemonPage() {
 
             <Pagination
                 currentPage={page}
+                firstPage={resetPage}
                 onPrevPage={handlePrevPage}
                 onNextPage={handleNextPage}
             />
