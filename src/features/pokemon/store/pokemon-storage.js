@@ -26,10 +26,6 @@ export function getPokemonFromStorage(idOrName) {
     );
 }
 
-export function getAllPokemonsFromStorage() {
-    return [...pokemonList];
-}
-
 export function addNewPokemonsToStorage(newPokemons) {
     const newPokemonsToAdd = newPokemons.filter(
         (newPokemon) =>
