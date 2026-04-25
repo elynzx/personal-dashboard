@@ -18,12 +18,15 @@ export const useGetPokemons = (offset = 0, limit = POKEMON_LIMIT) => {
         getPokemonsList(offset, limit)
             .then((response) =>
                 Promise.all(
-                    response.results.map((pokemon) =>{
-                        const cachedPokemon = getPokemonFromStorage(pokemon.name)
-                        if(cachedPokemon)
-                            return cachedPokemon
-                        getPokemon(pokemon.name).then(createPokemonProfile)}
-                    ),
+                    response.results.map((pokemon) => {
+                        const cachedPokemon = getPokemonFromStorage(
+                            pokemon.name,
+                        );
+                        if (cachedPokemon) return cachedPokemon;
+                        return getPokemon(pokemon.name).then(
+                            createPokemonProfile,
+                        );
+                    }),
                 ),
             )
             .then((pokemonProfiles) => {
