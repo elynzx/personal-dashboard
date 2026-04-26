@@ -1,8 +1,13 @@
+import axios from "axios";
+
+const API_URL = `https://pokeapi.co/api/v2/pokemon`;
 export const getPokemonsList = async (offset = 0, limit) => {
-    const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error("Failed getting pokemons list");
-    }
-    return response.json();
+    const response = await axios.get(API_URL, {
+        params: {
+            offset,
+            limit,
+        },
+    });
+
+    return response.data;
 };

@@ -1,8 +1,10 @@
+import axios from "axios";
+
+const API_URL = `https://pokeapi.co/api/v2/pokemon`;
+
 export const getPokemon = async (idOrName) => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${idOrName}`;
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error("Failed getting pokemon detail");
-    }
-    return response.json();
+    if (!idOrName) return null;
+
+    const response = await axios.get(`${API_URL}/${idOrName}`);
+    return response.data;
 };
