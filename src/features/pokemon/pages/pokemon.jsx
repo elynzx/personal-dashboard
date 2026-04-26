@@ -4,7 +4,8 @@ import { ArrowRightBox, ArrowLeftBox } from "pixelarticons/react";
 import { PokemonCard } from "../components/pokemon-card/pokemon-card";
 import { Pagination } from "../components/pagination/pagination";
 import { usePaginationStore } from "../store/use-pagination-store";
-import { PokemonSkeleton } from "../components/skeletons/pokemon-skeleton";
+import { PokemonCardSkeleton } from "../components/skeletons/pokemon-skeleton";
+import { SearchBar } from "../components/search-bar/search-bar";
 
 export function PokemonPage() {
     const page = usePaginationStore((state) => state.page);
@@ -15,7 +16,11 @@ export function PokemonPage() {
     );
 
     const offset = (page - 1) * limit;
-    const { data, loading, error } = useGetPokemons(offset, limit);
+    const { data, search, setSearch, loading, error } = useGetPokemons(
+        offset,
+        limit,
+    );
+
     const handlePrevPage = () => setPage(Math.max(1, page - 1));
     const handleNextPage = () => setPage(page + 1);
     const resetPage = () => resetPagination();
@@ -30,17 +35,21 @@ export function PokemonPage() {
         );
     }
 
-    if (loading) {
-        return <PokemonSkeleton />;
-    }
-
     return (
         <div className="flex flex-col h-full w-full bg-linear-to-b from-bgPink to-bgGreen rounded-t-xl overflow-hidden">
-            <div className="flex-1 overflow-y-auto scrollbar-hide flex flex-col items-center justify-center p-6 md:p-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 justify-items-center w-full max-w-6xl h-full">
-                    {data?.map((pokemon) => (
-                        <PokemonCard key={pokemon.name} pokemon={pokemon} />
-                    ))}
+            <SearchBar search={search} setSearch={setSearch} />
+            <div className="flex-1 md:flex overflow-y-auto scrollbar-hide inset-shadow-sm inset-shadow-bgDarkGray w-full h-full items-center justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-2 place-items-center py-4">
+                    {loading
+                        ? Array.from({ length: limit }).map((_, index) => (
+                              <PokemonCardSkeleton key={index} />
+                          ))
+                        : data?.map((pokemon) => (
+                              <PokemonCard
+                                  key={pokemon.name}
+                                  pokemon={pokemon}
+                              />
+                          ))}
                 </div>
             </div>
 
