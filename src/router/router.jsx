@@ -9,45 +9,56 @@ import { DashboardLayout } from "../common/layouts/dashboard-layout";
 import { TodoWrapper } from "../app/todo/todo-wrapper";
 import { PokemonProfile } from "../app/pokemon/pokemon-profile";
 import { PokemonLayout } from "../features/pokemon/layout/pokemon-layout";
+import { Login } from "../app/login/login";
+import { ProtectedRoute } from "../features/auth/components/protected-route";
 
 export const router = createBrowserRouter([
     {
-        path: "/",
-        Component: DashboardLayout,
+        path: "/login",
+        Component: Login,
+    },
+    {
+        element: <ProtectedRoute />,
         children: [
             {
-                index: true,
-                Component: Home,
-            },
-            {
-                path: "about-me",
-                Component: AboutMe,
-            },
-            {
-                path: "todo",
-                Component: TodoWrapper,
+                path: "/",
+                Component: DashboardLayout,
                 children: [
                     {
                         index: true,
-                        Component: Todo,
+                        Component: Home,
                     },
                     {
-                        path: "focus/:quadrant",
-                        Component: Focus,
-                    },
-                ],
-            },
-            {
-                path: "pokemon",
-                Component: PokemonLayout,
-                children: [
-                    {
-                        index: "true",
-                        Component: Pokemon,
+                        path: "about-me",
+                        Component: AboutMe,
                     },
                     {
-                        path: ":name",
-                        Component: PokemonProfile,
+                        path: "todo",
+                        Component: TodoWrapper,
+                        children: [
+                            {
+                                index: true,
+                                Component: Todo,
+                            },
+                            {
+                                path: "focus/:quadrant",
+                                Component: Focus,
+                            },
+                        ],
+                    },
+                    {
+                        path: "pokemon",
+                        Component: PokemonLayout,
+                        children: [
+                            {
+                                index: "true",
+                                Component: Pokemon,
+                            },
+                            {
+                                path: ":name",
+                                Component: PokemonProfile,
+                            },
+                        ],
                     },
                 ],
             },
