@@ -87,22 +87,6 @@ src/
     └── store/
     ```
 
-### Ejemplo de uso de Zustand
-
-```js
-import { useStore } from "@/features/todo/store/readTodos";
-
-const todos = useStore((state) => state.todos);
-```
-
-### Zustand Usage Example
-
-```js
-import { useStore } from "@/features/todo/store/readTodos";
-
-const todos = useStore((state) => state.todos);
-```
-
 ## Code Quality
 
 - **ESLint** for linting
