@@ -2,27 +2,32 @@ import { useUser } from "../../providers/user-provider/useUser";
 
 export const Avatar = () => {
     const { user } = useUser();
+
     return (
-        <div className="flex flex-col gap-3 items-center font-item">
+        <div className="flex flex-col gap-4 items-center font-item w-full">
             <img
                 src={user.avatar}
-                className="rounded-full w-20 h-20 shadow-xl shadow-white border border-white"
+                alt="avatar"
+                className="rounded-full w-18 h-18 shadow-xl shadow-white/10 border-2 border-white/20 object-cover"
             />
-            <div className="flex flex-col">
-                <h3 className="text-sm font-semibold tracking-tight text-gray-800">
+            <div className="flex flex-col items-center text-center">
+
+                <h3 className="text-[11px] font-black uppercase tracking-widest text-bgDarkGray/80">
                     {user.name}
-                    <span className="font-light text-gray-400 mx-1"> | </span>
-                    <span className="text-xs uppercase tracking-widest text-gray-500">
+                    <span className="font-light opacity-30 mx-2">|</span>
+                    <span className="text-[10px] text-bgDarkPink">
                         {user.role}
                     </span>
                 </h3>
-                <a
-                    href="https://github.com/elynzx/beary-focused-app"
-                    target="_blank"
-                    className="hover:underline mt-2 hover:text-bgDarkPink underline-offset-4 transition-colors text-[12px] text-bgDarkGray tracking-widest"
-                >
-                    ‧₊˚♡ by @{user.username} ♡‧₊˚
-                </a>
+                <div className="flex items-center justify-center gap-2 mt-2 bg-white/20 py-1 px-3 rounded-full border border-white/10">
+                    <div className="w-3.5 h-3.5 bg-white rounded-full flex items-center justify-center shadow-sm shrink-0">
+                        <div className="w-2 h-2 bg-bgDarkPink rounded-full animate-pulse shadow-[0_0_6px_rgba(255,182,193,0.8)]" />
+                    </div>
+                    <span className="text-[9px] font-black tracking-[1.5px] text-bgDarkGray/60 lowercase">
+                        @{user.username} <span className="text-bgDarkPink/80">online</span>
+                    </span>
+                </div>
+                <span className="text-[10px] mt-2 opacity-40 italic">‧₊˚♡‧₊˚</span>
             </div>
         </div>
     );
