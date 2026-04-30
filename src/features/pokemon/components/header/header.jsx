@@ -1,20 +1,18 @@
+import { Link, useLocation } from "react-router";
 import { CustomPokeball } from "../custom-pokeball/custom-pokeball";
+import Logo from "../../../../assets/pokemon-app/logo-gray.png";
+import { MenuSquare } from "pixelarticons/react";
+import { useState } from "react";
 
 export const Header = () => {
     return (
-        <header className="absolute left-1/2 -translate-x-1/2 top-2 z-40 w-[90%] md:w-[70%] ">
-            <div className="relative flex flex-col items-center w-full">
-                <div className="z-20 absolute -top-6 border-3 rounded-full border-bgDarkGray">
-                    <CustomPokeball size={40} />
-                </div>
-                <div className="z-0 absolute -top-8 md:-top-9 bg-bgPink rounded-full w-16 md:w-18 h-16 md:h-18"></div>
-                <div className="z-10 w-full bg-bgPink  rounded-full px-8 py-2 mt-2 flex items-center justify-center min-w-45 border-4 border-white/40 shadow-md">
-                    <div className="bg-white rounded-full py-1 flex items-center justify-center w-[90%] md:w-[70%]">
-                        <h1 className="font-item font-bold text-bgDarkPink uppercase text-sm tracking-widest">
-                            Poke App
-                        </h1>
-                    </div>
-                </div>
+        <header className="absolute left-1/2 -translate-x-1/2 -top-3 md:-top-8 -z-50 w-[85%] md:w-[80%]">
+            <div className="w-full bg-bgPink/70 backdrop-blur-3xl rounded-2xl flex items-center justify-center shadow-xl relative ">
+                    <img
+                        src={Logo}
+                        alt="PokeAPI"
+                        className="h-10 md:h-14 object-contain top-0"
+                    />
             </div>
         </header>
     );

@@ -1,4 +1,4 @@
-import { POKEMON_TYPE_COLORS } from "../../utils/pokemon-colors";
+import { POKEMON_TYPES_CONFIG } from "../../utils/pokemon-colors";
 
 const DataRow = ({ label, value }) => (
     <div className="flex flex-col py-2 border-b border-bgLightGray/40 last:border-0">
@@ -22,13 +22,14 @@ export const PokemonInfoCard = ({
     const pokemonWeightInKg = `${weight / 10} kg`;
     const abilitiesNames = abilities.join(", ");
     const typeNames = types.join(" / ");
-    const pokemonTypeBadges = types.map((typeNames) => ({
-        name: typeNames,
-        color: POKEMON_TYPE_COLORS[typeNames] || "#F3F4F6",
+
+    const pokemonTypeBadges = types.map((typeName) => ({
+        name: typeName,
+        color: POKEMON_TYPES_CONFIG[typeName]?.color || "#F3F4F6",
     }));
 
     return (
-        <div className="w-full md:max-w-[320px] bg-white rounded-2xl px-5 py-7 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-white flex flex-col fadeIn">
+        <div className="w-full md:max-w-[320px] px-5 py-7 md:p-8 flex flex-col  bg-white/40 backdrop-blur-md border border-white/50 rounded-xl shadow-2xs shadow-white transition-all duration-300 group-hover:bg-white/40 cursor-pointer">
             <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-bgLightGray/30">
                 <div
                     className="w-2 h-6 rounded-full"
@@ -53,7 +54,10 @@ export const PokemonInfoCard = ({
                     <span
                         key={badge.name}
                         className="px-5 py-1 rounded-md text-[10px] font-black text-white uppercase tracking-widest"
-                        style={{ backgroundColor: badge.color }}
+                        style={{ 
+                            backgroundColor: badge.color,
+                            boxShadow: `0 4px 10px ${badge.color}40`
+                        }}
                     >
                         {badge.name}
                     </span>

@@ -1,35 +1,46 @@
 import { useNavigate } from "react-router";
-import { POKEMON_TYPE_COLORS } from "../../utils/pokemon-colors";
+import { POKEMON_TYPES_CONFIG } from "../../utils/pokemon-colors";
 
 export const PokemonCard = ({ pokemon }) => {
     const navigate = useNavigate();
     const { id, name, image, types } = pokemon;
     const mainType = types[0];
-    const themeColor = POKEMON_TYPE_COLORS[mainType] || "#F5F5F5";
+    const typeConfig =
+        POKEMON_TYPES_CONFIG[mainType] || POKEMON_TYPES_CONFIG.normal;
+    const Icon = typeConfig.icon;
+    const themeColor = typeConfig.color;
     const formattedId = `#${id.toString().padStart(3, "0")}`;
 
     return (
         <div
             onClick={() => navigate(`/pokemon/${pokemon.name}`)}
-            className="flex flex-col py-3 font-item bg-white border-2 border-bgGray/40 w-46 rounded-2xl shadow-lg transition-transform hover:scale-105 fade-in-up"
+            className="relative w-40 h-50 flex flex-col items-center justify-end group"
         >
-            <div className="w-full h-35 flex justify-center items-center p-4">
+            <div className="absolute -top-3 z-10 w-full h-32 flex justify-center items-center pointer-events-none transition-transform duration-300 group-hover:scale-110">
                 <img
                     src={image}
                     alt={name}
-                    className="w-full h-full object-contain drop-shadow-md"
+                    className="h-full object-contain drop-shadow-[0_6px_7px_rgba(0,0,0,0.3)]"
                 />
             </div>
-            <div className="flex flex-col justify-center items-center p-2">
-                <span className="text-xs font-bold">{formattedId}</span>
-                <h2 className="capitalize font-bold text-xs text-bgDarkGray">
-                    {name}
-                </h2>
-                <div
-                    className="text-xs text-white px-5 mt-2 rounded-sm shadow-xl"
-                    style={{ backgroundColor: themeColor }}
-                >
-                    <span>{mainType}</span>
+            <div className="relative w-full h-35 pb-6 flex flex-col items-center justify-end bg-white/50 backdrop-blur-md border border-white/50 rounded-b-xl  rounded-t-4xl shadow-2xs shadow-white transition-all duration-300 group-hover:bg-white/70 cursor-pointer">
+                <div className="flex flex-col items-center text-bgDarkGray text-center px-2">
+                    <span className="text-[10px] font-bold opacity-50">
+                        {formattedId}
+                    </span>
+                    <h2 className="capitalize font-semibold text-xs leading-tight">
+                        {name}
+                    </h2>
+                    <div
+                        className="text-[9px] text-white px-3 py-1 mt-3 rounded-md font-bold uppercase flex gap-1.5"
+                        style={{
+                            backgroundColor: typeConfig.color,
+                            boxShadow: `0 4px 15px ${typeConfig.color}60`,
+                        }}
+                    >
+                        <Icon weight="fill" size={12} className="text-white" />
+                        <span>{mainType}</span>
+                    </div>
                 </div>
             </div>
         </div>

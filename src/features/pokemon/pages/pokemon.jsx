@@ -1,13 +1,21 @@
 import { Header } from "../components/header/header";
 import { useGetPokemons } from "../hooks/use-get-pokemons";
-import { ArrowRightBox, ArrowLeftBox } from "pixelarticons/react";
+import { ArrowRightBox, ArrowLeftBox, Search } from "pixelarticons/react";
 import { PokemonCard } from "../components/pokemon-card/pokemon-card";
 import { Pagination } from "../components/pagination/pagination";
 import { usePaginationStore } from "../store/use-pagination-store";
 import { PokemonCardSkeleton } from "../components/skeletons/pokemon-skeleton";
 import { SearchBar } from "../components/search-bar/search-bar";
+import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 
 export function PokemonPage() {
+    const [search, setSearch] = useState("");
+    const [type, setType] = useState("all");
+    const [debouncedSearch] = useDebounce(search, 600);
+
+    const cleanSearch = debouncedSearch.replace(/\s+/g, "").toLowerCase();
+
     const page = usePaginationStore((state) => state.page);
     const limit = usePaginationStore((state) => state.limit);
     const setPage = usePaginationStore((state) => state.setPage);
@@ -16,14 +24,27 @@ export function PokemonPage() {
     );
 
     const offset = (page - 1) * limit;
-    const { data, search, setSearch, loading, error } = useGetPokemons(
+    const isSearching = search.trim().length > 0;
+
+    const { data, loading, error } = useGetPokemons(
         offset,
         limit,
+        cleanSearch,
+        type,
     );
 
     const handlePrevPage = () => setPage(Math.max(1, page - 1));
     const handleNextPage = () => setPage(page + 1);
     const resetPage = () => resetPagination();
+    const handleSearchChange = (searchValue) => {
+        setSearch(searchValue);
+        resetPage();
+    };
+
+    const handleTypeChange = (typeValue) => {
+        setType(typeValue);
+        resetPage();
+    };
 
     if (error) {
         return (
@@ -36,28 +57,39 @@ export function PokemonPage() {
     }
 
     return (
-        <div className="flex flex-col h-full w-full bg-linear-to-b from-bgPink to-bgGreen rounded-t-xl overflow-hidden">
-            <SearchBar search={search} setSearch={setSearch} />
-            <div className="flex-1 md:flex overflow-y-auto scrollbar-hide inset-shadow-sm inset-shadow-bgDarkGray w-full h-full items-center justify-center">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-2 place-items-center py-4">
-                    {loading
-                        ? Array.from({ length: limit }).map((_, index) => (
-                              <PokemonCardSkeleton key={index} />
-                          ))
-                        : data?.map((pokemon) => (
-                              <PokemonCard
-                                  key={pokemon.name}
-                                  pokemon={pokemon}
-                              />
-                          ))}
+        <div className="flex flex-col h-full w-full rounded-t-xl overflow-hidden">
+            <SearchBar
+                search={search}
+                setSearch={handleSearchChange}
+                setType={handleTypeChange}
+            />
+            <div className="flex-1 overflow-y-auto scrollbar-hide inset-shadow-sm inset-shadow-bgDarkGray bg-white/20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 p-4 mt-8 max-w-3xl mx-auto place-items-center">
+                    {loading ? (
+                        Array.from({ length: limit }).map((_, index) => (
+                            <PokemonCardSkeleton key={index} />
+                        ))
+                    ) : data.length > 0 ? (
+                        data?.map((pokemon) => (
+                            <PokemonCard key={pokemon.name} pokemon={pokemon} />
+                        ))
+                    ) : (
+                        <div className="col-span-full flex flex-col justify-center items-center py-25 mt-12">
+                            <Search size={48} className="mb-4 opacity-20" />
+                            <p className="font-item font-bold text-lg">
+                                No Pokemon found
+                            </p>
+                            <p className="text-xs">Try adjusting your search</p>
+                        </div>
+                    )}
                 </div>
             </div>
-
             <Pagination
                 currentPage={page}
                 firstPage={resetPage}
                 onPrevPage={handlePrevPage}
                 onNextPage={handleNextPage}
+                isSearching={isSearching}
             />
         </div>
     );
