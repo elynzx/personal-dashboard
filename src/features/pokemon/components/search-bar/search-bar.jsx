@@ -8,7 +8,7 @@ export const SearchBar = ({ search, setSearch, setType }) => {
     const { types, loading, error } = useGetFilters();
 
     return (
-        <div className="font-item text-[12px] h-22 px-4 md:px-14 bg-bgDarkGray w-full flex items-center py-4 md:py-0">
+        <div className="font-item text-[12px] min-h-22 px-4 md:px-14 bg-bgDarkGray w-full flex items-center py-4 md:py-0">
             <div className="flex flex-col md:flex-row gap-3 w-full justify-between items-center mt-2">
                 <div className="flex gap-2 w-full md:max-w-xs h-10 text-white tracking-wide bg-white rounded-md items-center px-3 border-2 border-transparent focus-within:border-bgPink transition-all">
                     <Search className="text-bgDarkGray shrink-0" size={18} />

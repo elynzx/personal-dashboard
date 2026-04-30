@@ -6,8 +6,8 @@ import { useState } from "react";
 
 export const Header = () => {
     return (
-        <header className="absolute left-1/2 -translate-x-1/2 -top-3 md:-top-8 -z-50 w-[85%] md:w-[80%]">
-            <div className="w-full bg-bgPink/70 backdrop-blur-3xl rounded-2xl flex items-center justify-center shadow-xl relative ">
+        <header className="absolute left-1/2 -translate-x-1/2 -top-6 md:-top-9 -z-50 w-[85%] md:w-[70%] ">
+            <div className="w-full bg-bgLightPink/70 backdrop-blur-3xl rounded-2xl flex items-center justify-center shadow-xl relative border-4 border-white/30">
                     <img
                         src={Logo}
                         alt="PokeAPI"
