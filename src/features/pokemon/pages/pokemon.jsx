@@ -64,7 +64,7 @@ export function PokemonPage() {
                 setType={handleTypeChange}
             />
             <div className="flex-1 overflow-y-auto scrollbar-hide inset-shadow-sm inset-shadow-bgDarkGray bg-white/20">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4 mt-8 max-w-3xl mx-auto place-items-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 py-12  max-w-3xl mx-auto place-items-center">
                     {loading ? (
                         Array.from({ length: limit }).map((_, index) => (
                             <PokemonCardSkeleton key={index} />

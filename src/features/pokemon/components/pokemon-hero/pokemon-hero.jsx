@@ -8,7 +8,7 @@ export const PokemonHero = ({ id, name, imageUrl }) => {
                 <img
                     src={imageUrl}
                     alt={name}
-                    className="w-28 h-28 md:w-30 md:h-30 object-contain relative z-20 drop-shadow-lg transition-transform hover:scale-110"
+                    className="w-28 h-28 md:w-50 md:h-50 object-contain relative z-20 drop-shadow-lg transition-transform hover:scale-110"
                 />
             </div>
             <div className="mt-4 md:mt-12 text-center">
