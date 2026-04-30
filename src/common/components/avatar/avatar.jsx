@@ -4,7 +4,7 @@ export const Avatar = () => {
     const { user } = useUser();
 
     return (
-        <div className="flex flex-col gap-4 items-center font-item w-full">
+        <div className="flex flex-col gap-4 items-center font-item w-full py-2">
             <img
                 src={user.avatar}
                 alt="avatar"
@@ -19,7 +19,7 @@ export const Avatar = () => {
                         {user.role}
                     </span>
                 </h3>
-                <div className="flex items-center justify-center gap-2 mt-2 bg-white/20 py-1 px-3 rounded-full border border-white/10">
+                <div className="flex items-center justify-center gap-2 mt-2 bg-white/50 py-1 px-3 rounded-full border border-white/10">
                     <div className="w-3.5 h-3.5 bg-white rounded-full flex items-center justify-center shadow-sm shrink-0">
                         <div className="w-2 h-2 bg-bgDarkPink rounded-full animate-pulse shadow-[0_0_6px_rgba(255,182,193,0.8)]" />
                     </div>
@@ -27,7 +27,6 @@ export const Avatar = () => {
                         @{user.username} <span className="text-bgDarkPink/80">online</span>
                     </span>
                 </div>
-                <span className="text-[10px] mt-2 opacity-40 italic">‧₊˚♡‧₊˚</span>
             </div>
         </div>
     );
