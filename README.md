@@ -122,18 +122,6 @@ npm run lint
 3. Verify code: `npm run lint`
 4. Open a Pull Request
 
-### Commit Convention
-
-```
-feat: new feature
-fix: bug fix
-docs: documentation
-style: formatting/styling
-refactor: code refactoring
-test: adding tests
-chore: miscellaneous tasks
-```
-
 ## Resources
 
 - [React Docs](https://react.dev)
