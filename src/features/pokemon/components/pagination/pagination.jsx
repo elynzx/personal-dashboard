@@ -9,6 +9,7 @@ export const Pagination = ({
     firstPage,
     onPrevPage,
     onNextPage,
+    isSearching,
 }) => {
     return (
         <div className="flex items-center justify-between text-white tracking-wide font-item text-[12px] h-16 md:h-18 px-4 md:px-12 bg-bgDarkGray w-full mt-auto rounded-b-xl border-t border-white/5">
@@ -30,12 +31,13 @@ export const Pagination = ({
                 </button>
                 <div className="bg-white/10 px-3 py-1 rounded-lg select-none border border-white/10 shadow-inner">
                     <span className="font-bold uppercase whitespace-nowrap">
-                         {currentPage}
+                        {currentPage}
                     </span>
                 </div>
                 <button
-                    className="hover:text-bgDarkPink transition-transform active:scale-90 cursor-pointer"
+                    className="disabled:opacity-30 hover:text-bgDarkPink transition-transform active:scale-90 cursor-pointer"
                     onClick={onNextPage}
+                    disabled={isSearching}
                 >
                     <SquareChevronRight size={28} />
                 </button>
